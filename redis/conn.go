@@ -57,17 +57,6 @@ type conn struct {
 	numScratch [40]byte
 }
 
-// DialTimeout acts like Dial but takes timeouts for establishing the
-// connection to the server, writing a command and reading a reply.
-//
-// Deprecated: Use Dial with options instead.
-func DialTimeout(network, address string, connectTimeout, readTimeout, writeTimeout time.Duration) (Conn, error) {
-	return Dial(network, address,
-		DialConnectTimeout(connectTimeout),
-		DialReadTimeout(readTimeout),
-		DialWriteTimeout(writeTimeout))
-}
-
 // DialOption specifies an option for dialing a Redis server.
 type DialOption func(*dialOptions)
 
